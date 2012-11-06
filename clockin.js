@@ -13,7 +13,7 @@ var rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
-var TIMELOG = "timelog.txt";
+var TIMELOG = ".timelog";
 
 fs.exists(TIMELOG, function(exists) {
     //if file does not exist. ask whether we should make one

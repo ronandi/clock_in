@@ -1,0 +1,9 @@
+{
+    "name": "clockin",
+    "description": "A very simple time tracking tool",
+    "version": "0.0.1",
+    "author": "Rohit Kumar",
+    "bin": {
+        "clockin": "clockin.js"
+    }
+}
