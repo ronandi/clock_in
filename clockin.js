@@ -26,7 +26,8 @@ fs.exists(TIMELOG, function(exists) {
                         throw err;
                     var data = {};
                     data.log = [];
-                    data.checkedin = false;
+                    data.checkedin = true;
+                    data.cumultime = 0;
                     fs.close(fd);
                     console.log("created timelog.txt");
                     updateLog(data);
@@ -46,7 +47,11 @@ fs.exists(TIMELOG, function(exists) {
 
 function updateLog(log) {
     log.checkedin = !log.checkedin
-    log.log.push(new Date());
+    if (log.checkedin) {
+        log.cumultime += new Date().getTime() - log.log.pop()  
+        console.log(Math.round(log.cumultime/1000/60) + " minutes");
+    }
+    log.log.push(new Date().getTime());
     console.log("updated log...");
     fs.writeFile(TIMELOG, JSON.stringify(log));
 }
